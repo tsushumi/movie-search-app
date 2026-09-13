@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #12141c;
+  --color-surface: #1b1e29;
+  --color-surface-raised: #23273a;
+  --color-border-soft: #2e3245;
+  --color-marquee: #e8a33d;
+  --color-marquee-dim: #b9812f;
+  --color-ticket: #c2452d;
+  --color-paper: #f2efe9;
+  --color-muted: #8c90a3;
+
+  --font-display: "Bitter", "Georgia", serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+}
+
+html {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+  --color-ink: #f2efe9;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ece7db;
+  --color-border-soft: #d8d2c2;
+  --color-paper: #201c14;
+  --color-muted: #6b6656;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Sprocket-hole strip, evokes a film reel edge */
+.film-strip::before,
+.film-strip::after {
+  content: "";
+  display: block;
+  height: 10px;
+  background-image: radial-gradient(circle, var(--color-ink) 3px, transparent 3.5px);
+  background-size: 16px 10px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-flicker {
+    animation: flicker 3.4s ease-in-out infinite;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  94% { opacity: 0.75; }
+  96% { opacity: 1; }
+}
